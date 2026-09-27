@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing - Segurança Digital</title>
+
+    <script>
+        // Verifica se o usuário já havia escolhido o tema escuro anteriormente.
+        // Evita o "flash" branco ao recarregar a página.
+        (function() {
+            const tema = localStorage.getItem('tema');
+            if (tema === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="navbar">
+        <div class="header-container">
+            
+            <!-- ESQUERDA: Botão Home/Voltar -->
+            <div class="header-left">
+                <a href="index.html" class="logo-home" title="Voltar para a página inicial">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>Início</span>
+                </a>
+            </div>
+
+            <!-- CENTRO: Links de Navegação Rápida -->
+            <nav class="header-center">
+                <a href="phishing.html" class="nav-link">Phishing</a>
+                <a href="malwares.html" class="nav-link">Malwares</a>
+                <a href="golpes.html" class="nav-link">Golpes</a>
+                <a href="dicas.html" class="nav-link">Dicas</a>
+            </nav>
+
+            <!-- DIREITA: Tema e Feedback -->
+            <div class="header-right">
+                <button id="toggleTheme" class="themeButton" aria-label="Mudar tema">
+                    <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback-header">Feedback</a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>O que é Phishing?</h1>
+            
+            <p>Phishing é uma técnica de engenharia social usada por cibercriminosos para enganar usuários e obter informações confidenciais, como senhas e números de cartão de crédito. Isso geralmente é feito através de e-mails, SMS ou mensagens falsas que parecem vir de instituições confiáveis.</p>
+            
+            <h2>Como identificar?</h2>
+            <ul>
+                <li>Senso de urgência exagerado ("Sua conta será bloqueada hoje!").</li>
+                <li>Links com erros ortográficos sutis.</li>
+                <li>Remetentes desconhecidos ou estranhos.</li>
+            </ul>
+
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback">Envie seu Feedback</a>
+        </div>
+    </main>
+
+    <!-- Script para que o botão de tema funcione aqui também -->
+    <script src="script.js"></script>
+</body>
+</html>

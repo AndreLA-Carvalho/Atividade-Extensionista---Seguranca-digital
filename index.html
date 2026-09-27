@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança Digital - Proteção no dia a dia</title>
+
+    <script>
+        // Verifica se o usuário já havia escolhido o tema escuro anteriormente.
+        // Evita o "flash" branco ao recarregar a página.
+        (function() {
+            const tema = localStorage.getItem('tema');
+            if (tema === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar" id="main-navbar" style="display: none;">
+        <div class="header-container">
+            
+            <!-- ESQUERDA: Botão Home/Voltar -->
+            <div class="header-left">
+                <a href="index.html" class="logo-home" title="Voltar para a página inicial">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>Início</span>
+                </a>
+            </div>
+
+            <!-- CENTRO: Links de Navegação Rápida -->
+            <nav class="header-center">
+                <a href="phishing.html" class="nav-link">Phishing</a>
+                <a href="malwares.html" class="nav-link">Malwares</a>
+                <a href="golpes.html" class="nav-link">Golpes</a>
+                <a href="dicas.html" class="nav-link">Dicas</a>
+            </nav>
+
+            <!-- DIREITA: Tema e Feedback -->
+            <div class="header-right">
+                <button id="toggleTheme" class="themeButton" aria-label="Mudar tema">
+                    <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback-header">Feedback</a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <!-- TELA 1: PORTA DE ENTRADA (REGISTRO) -->
+        <div class="container" id="tela-login">
+            <span class="eyebrow">Segurança Digital no dia a dia</span>
+            <h1>Projeto de Conscientização: Segurança Digital</h1>
+            <p>Para acessar nosso material sobre como se proteger e permanecer seguro online, por favor, insira seu nome abaixo.</p>
+            
+            <input type="text" id="nomeUsuario" placeholder="Digite seu nome completo">
+            
+            <span id="erro-nome" class="mensagem-erro"></span>
+            
+            <span class="aviso-faculdade">* O nome inserido é coletado apenas para fins de registro de fluxo de acesso para uma atividade universitária.</span>
+            
+            <button id="btnAcessar">Acessar site</button>
+            <p id="msg-status" style="display:none; color: #e67e22; font-size: 14px;">Registrando acesso, aguarde...</p>
+        </div>
+
+        <!-- TELA 2: CONTEÚDO EDUCACIONAL E FEEDBACK -->
+        <div class="container" id="tela-conteudo">
+
+            <h1>O que é segurança na internet?</h1>
+            <p>A segurança na internet consiste no conjunto de estratégias e práticas voltadas à proteção contra fraudes, roubos e diversas ameaças digitais. Para se manter seguro online, é fundamental adotar boas práticas digitais, navegar com cuidado, conhecer os riscos virtuais e utilizar softwares de proteção adequados.
+            </br></br>
+            Com o avanço e a presença constante da tecnologia em nosso dia a dia, desde a comunicação pessoal até o uso de dispositivos conectados, garantir a proteção digital tornou-se indispensável. Apesar de trazerem inúmeros benefícios, as inovações tecnológicas também introduzem novas vulnerabilidades cibernéticas, tornando a conscientização um elemento crucial no combate e na prevenção contra vírus e malwares.
+            </p>
+
+            <h1>Os principais perigos da Internet</h1>
+            <p>Ao navegar na Internet, você e sua família ficam expostos — muitas vezes sem perceber — a diversos riscos digitais. Como os cibercriminosos desenvolvem constantemente novas estratégias para atingir os usuários, o cenário da segurança online evolui sem parar.
+            </br></br>
+            Aprenda mais sobre as principais ameaças virtuais e descubra como manter você e sua família protegida.
+            </p>
+            
+
+            <div class="grid-cards">
+                <a href="phishing.html" class="dica-box">
+                    <h3>Phishing</h3>
+                    <p>Phishing é um ataque cibernético para enganar as pessoas a compartilhar dados confidenciais. Clique para saber como identificar e se proteger.</p>
+                </a>
+
+                <a href="golpes.html" class="dica-box">
+                    <h3>Golpes online</h3>
+                    <p>Descubra os principais golpes online e como se proteger contra eles clicando aqui.</p>
+                </a>
+
+                <a href="malwares.html" class="dica-box">
+                    <h3>Malwares</h3>
+                    <p>Malwares são programas maliciosos que se infiltram nos dispositivos. Clique para aprender a se proteger.</p>
+                </a>
+
+                <a href="dicas.html" class="dica-box">
+                    <h3>Dicas Extras</h3>
+                    <p>Veja mais dicas importantes de navegação segura.</p>
+                </a>
+            </div>
+
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback">Envie seu Feedback</a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

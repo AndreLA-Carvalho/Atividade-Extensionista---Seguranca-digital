@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing - Segurança Digital</title>
+
+    <script>
+        // Verifica se o usuário já havia escolhido o tema escuro anteriormente.
+        // Evita o "flash" branco ao recarregar a página.
+        (function() {
+            const tema = localStorage.getItem('tema');
+            if (tema === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="navbar">
+        <div class="header-container">
+            
+            <!-- ESQUERDA: Botão Home/Voltar -->
+            <div class="header-left">
+                <a href="index.html" class="logo-home" title="Voltar para a página inicial">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>Início</span>
+                </a>
+            </div>
+
+            <!-- CENTRO: Links de Navegação Rápida -->
+            <nav class="header-center">
+                <a href="phishing.html" class="nav-link">Phishing</a>
+                <a href="malwares.html" class="nav-link">Malwares</a>
+                <a href="golpes.html" class="nav-link">Golpes</a>
+                <a href="dicas.html" class="nav-link">Dicas</a>
+            </nav>
+
+            <!-- DIREITA: Tema e Feedback -->
+            <div class="header-right">
+                <button id="toggleTheme" class="themeButton" aria-label="Mudar tema">
+                    <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback-header">Feedback</a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>O que é Phishing?</h1>
+            
+            <p>Phishing é um tipo de ataque cibernético que usa e-mails, mensagens de texto, telefonemas ou sites fraudulentos para enganar as pessoas a compartilhar dados confidenciais, baixar malware ou se expor a crimes cibernéticos de outras formas.
+            <br><br>
+            Ataques de phishing são uma forma de engenharia social. Ao contrário de outros ciberataques, que têm como alvo direto redes e recursos, os ataques de engenharia social usam erros humanos, histórias falsas e táticas de pressão para manipular as vítimas e causar danos involuntários a si mesmas ou a suas organizações.
+            <br><br>
+            Estes ataques geralmente imitam fontes legítimas, como bancos ou sites populares, para parecerem confiáveis. Seu objetivo é explorar a confiança de uma pessoa nessas instituições, persuadindo-a a fornecer informações pessoais, clicar em links maliciosos ou fazer download de arquivos contendo malware.
+            <br>
+            <img src="Images/phishing.jpg" alt="Ilustração de phishing" style="width: 400px; max-width: 100%; height: auto; margin: 20px auto; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: block;">
+
+            </p>
+            <h2>Como identificar uma mensagem de Phishing?</h2>
+            <p>
+              As mensagens de phishing são projetadas para induzir os destinatários ao erro e obter dados confidenciais. Eles costumam apresentar certos padrões e características:
+              <ul>
+                <li><b>Urgência e pressão:</b> Costumam exigir ações imediatas com alegações alarmantes, como o encerramento iminente de uma conta, ameaças judiciais ou promoções com prazo limitado.</li>
+                <li><b>Pedidos de dados confidenciais:</b> Solicitam frequentemente o envio de informações pessoais e financeiras, como senhas, dados bancários, números de cartão de crédito ou registros de identificação.</li>
+                <li><b>Links e anexos suspeitos:</b> Incluem links redirecionáveis para páginas fraudulentas ou arquivos anexados, destinados a instalar malware em seu dispositivo.</li>
+                <li><b>Falsificação de remetente:</b> Simulam comunicações oficiais de instituições de confiança, como bancos, órgãos públicos ou marcas consolidadas.</li>
+                <li><b>Inimidação e ameaças:</b> Utilizam mensagens que criam medo ou ansiedade, como alegações de violação de segurança ou alegações de que a conta será bloqueada.</li>
+                <li><b>Erros de ortografia e gramática:</b> Embora nem sempre seja o caso, muitas mensagens de phishing contêm erros gramaticais e de ortografia incomuns que não seriam típicas da linguagem oficial da instituição.</li>
+                <li><b>Promessas irrealistas:</b> Oferecem vantagens exageradas ou prêmios improváveis, como contemplações em sorteios e recebimento de dinheiro em excesso.</li>
+                <li><b>Comunicações não solicitadas:</b> Chegam sem solicitação prévia e abordam contas, produtos ou serviços com os quais você não possui vínculo.</li>
+              </ul>
+            </p>
+
+            <h2>Como se proteger contra Phishing?</h2>
+            <p>
+              Para se proteger contra ataques de phishing, siga estas práticas recomendadas:
+              <ul>
+                <li><b>Verifique a autenticidade:</b> Confirme a origem da mensagem antes de clicar em links ou anexos. Procure por erros de ortografia, gramática ou endereços de e-mail suspeitos.</li>
+                <li><b>Use autenticação multifator (MFA):</b> Ative a MFA em todas as contas importantes para adicionar uma camada extra de segurança.</li>
+                <li><b>Atualize regularmente:</b> Mantenha seu sistema operacional, navegador e antivírus atualizados para proteger contra vulnerabilidades conhecidas.</li>
+                <li><b>Saiba reconhecer alertas:</b> Preste atenção a mensagens que criam urgência ou pressão, como ameaças de bloqueio de conta ou ofertas improváveis.</li>
+                <li><b>Use ferramentas de segurança:</b> Utilize filtros de spam, extensões de segurança e verificadores de links para detectar e bloquear conteúdo malicioso.</li>
+                <li><b>Eduque-se e ensine outros:</b> Esteja ciente das técnicas de phishing e compartilhe conhecimento com familiares e colegas para fortalecer a segurança coletiva.</li>
+              </ul>
+            </p>
+
+            <h2> Clicou em um link de phishing? Veja o que fazer</h2>
+            <p>
+                Mantenha a calma, mas tome medidas imediatas.
+                <ul>
+                    <li><b>Desconectar: </b>Se você clicou em um link e foi redirecionado para um site suspeito, desconecte-se da internet imediatamente para evitar mais danos e roubo de dados.</li>
+                    <li><b> Verifique se há virus e malware: </b> Execute uma varredura completa do seu sistema com um antivírus atualizado para garantir que não haja malware instalado.</li>
+                    <li><b>Altere senhas: </b> Se você já forneceu credenciais em um site phishing, altere imediatamente as senhas das contas afetadas, especialmente para contas financeiras, bancárias e de email.</li>
+
+                </ul>
+            </p>
+
+            <h2> O que acontece se você abrir um site de phishing?</h2>
+            <p>
+                Abrir um site de phishing pode ter consequências graves, dependendo do que você faz no site. Aqui estão os principais riscos:
+                <ul>
+                    <li><b>Roubo de dados pessoais:</b> Sites de phishing são projetados para coletar suas informações pessoais, como nome, endereço de e-mail, número de telefone e até mesmo dados financeiros.</li>
+                    <li><b>Phishing de e-mail:</b> Sites de phishing podem ser usados para enviar e-mails maliciosos para outras pessoas, o que pode levar a ataques de phishing em massa.</li>
+                    <li><b>Malware:</b> Sites de phishing podem conter malware, como vírus, spyware e outros tipos de software malicioso que podem danificar seu dispositivo ou roubar seus dados.</li>
+                </ul>
+
+                Agora que você já sabe o que é phishing e como se proteger, que tal aprendermos sobre os tipos de <a href="malware.html">malware</a> e como evitá-los?
+            </p>
+
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback">Envie seu Feedback</a>
+        </div>
+    </main>
+
+    <!-- Script para que o botão de tema funcione aqui também -->
+    <script src="script.js"></script>
+</body>
+</html>
