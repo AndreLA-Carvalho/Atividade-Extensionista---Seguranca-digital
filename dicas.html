@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dicas de segurança - Segurança Digital</title>
+        <!-- Aplica o tema salvo antes de exibir a página. -->
+        <script>
+            try {
+                if (localStorage.getItem('tema') === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (error) {
+            }
+        </script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- A navegação se repete nas páginas para manter os atalhos sempre no mesmo lugar. -->
+        <header class="navbar">
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="index.html" class="logo-home" title="Voltar para a página inicial">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span>Início</span>
+                    </a>
+                </div>
+                <nav class="header-center" aria-label="Navegação principal">
+                    <a href="phishing.html" class="nav-link">Phishing</a>
+                    <a href="malwares.html" class="nav-link">Malwares</a>
+                    <a href="golpes.html" class="nav-link">Golpes</a>
+                    <a href="dicas.html" class="nav-link" aria-current="page">Dicas</a>
+                </nav>
+                <div class="header-right">
+                    <button id="toggleTheme" class="themeButton" aria-label="Mudar tema">
+                        <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&amp;ouid=103952147136890410990" target="_blank" rel="noopener noreferrer" class="btn-feedback-header">Feedback</a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <h1>Segurança digital: Como proteger seus dados online.</h1>
+                <p>Na era digital, a segurança dos dados é uma preocupação crescente para todos. Com o aumento do uso da internet e dos dispositivos conectados, é essencial entender como proteger suas informações pessoais e digitais. Este guia oferece dicas práticas para ajudá-lo a manter seus dados seguros e privados.</p>
+                <div class="coluna-dicas">
+                    <div class="dica-box">
+                        <h3>Ative a autenticação de dois fatores (2FA)</h3>
+                        <p>A autenticação de dois fatores (2FA) adiciona uma camada extra de segurança à sua conta, exigindo uma senha e um código de verificação adicional para acessar sua conta. Por exemplo, em vez de simplesmente perguntar um nome de usuário e senha, a autenticação de dois fatores solicita informações adicionais, como:</p>
+                        <ul>
+                            <li>
+                                <strong>Um código de verificação enviado por SMS</strong>
+                            </li>
+                            <li>
+                                <strong>Um código de verificação gerado por um aplicativo de autenticação</strong>
+                            </li>
+                            <li>
+                                <strong>Um código de verificação gerado por um token físico</strong>
+                            </li>
+                        </ul>
+                        <p>Veja algumas opções de aplicativos de autenticação gratuitas, disponíveis para android e ios:</p>
+                        <ul>
+                            <li>
+                                <a href="https://www.authy.com/download/" target="_blank" rel="noopener noreferrer">Authy</a>
+                            </li>
+                            <li>
+                                <a href="https://2fas.com/download/" target="_blank" rel="noopener noreferrer">2FAS</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dica-box">
+                        <h3>Crie senhas fortes e use um gerenciador de senhas seguro</h3>
+                        <p>Uma senha forte ajudará você a manter a segurança na Internet. Uma boa senha é:</p>
+                        <ul>
+                            <li>
+                                <strong>Longa:</strong> composta de até 12 ou mais caracteres.</li>
+                            <li>
+                                <strong>Uma combinação de caracteres:</strong> letras minúsculas e maiúsculas, além de símbolos e números.</li>
+                            <li>
+                                <strong>Evita o óbvio:</strong> como usar números em sequência (“1234”) ou informações pessoais que alguém que conhece você possa adivinhar, como sua data de nascimento ou o nome do seu animal de estimação.</li>
+                        </ul>
+                        <p>Um gerenciador de senhas pode ajudar – gerando, armazenando e gerenciando todas as suas senhas em um cofre virtual seguro.</p>
+                        <p>Veja algumas opções de gerenciadores de senhas gratuitos, disponíveis para android e ios:</p>
+                        <ul>
+                            <li>
+                                <a href="https://1password.com/download/" target="_blank" rel="noopener noreferrer">1Password</a>
+                            </li>
+                            <li>
+                                <a href="https://bitwarden.com/download/" target="_blank" rel="noopener noreferrer">Bitwarden</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dica-box">
+                        <h3>Use um antivírus confiável.</h3>
+                        <p>Um antivírus confiável pode ajudar a proteger seu dispositivo contra malware e outras ameaças. Ele pode detectar, bloquear e remover vírus, spyware, trojans e outros tipos de software malicioso. Embora seja altamente recomendável utilizar um antivírus pago, existem opções gratuitas que oferecem proteção básica.</p>
+                        <p>Veja algumas opções de antivírus gratuitos, disponíveis para todos os dispositivos:</p>
+                        <ul>
+                            <li>
+                                <a href="https://www.kaspersky.com.br/downloads" target="_blank" rel="noopener noreferrer">Kaspersky</a>
+                            </li>
+                            <li>
+                                <a href="https://www.malwarebytes.com/pt-br/mwb-download" target="_blank" rel="noopener noreferrer">Malwarebytes</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dica-box">
+                        <h3>6 Dicas para evitar golpes na internet</h3>
+                        <p>Para quem quer saber como evitar golpes online, veja a seguir algumas dicas que você pode seguir para se proteger:</p>
+                        <ol>
+                            <li>
+                                <strong>Cuidado com solicitações de informações ou dinheiro.</strong>
+                                <p>Evite enviar dinheiro ou fornecer informações de cartão de crédito, contas online ou cópias de documentos pessoais a quem você não conhece ou confia. Use apenas métodos de pagamento seguros que você já conhece.</p>
+                            </li>
+                            <li>
+                                <strong>Não responda a ligações solicitando acesso remoto ao seu computador.</strong>
+                                <p>Se alguém afirma ser de uma empresa conhecida de telecomunicações ou tecnologia e deseja acessar seu computador para corrigir um problema ou instalar uma atualização gratuita, desligue imediatamente e jamais compartilhe sua tela.</p>
+                            </li>
+                            <li>
+                                <strong>Revise suas configurações de privacidade e segurança nas redes sociais.</strong>
+                                <p>Se você usa sites de redes sociais, tenha cuidado com quem você se conecta e aprenda a usar suas configurações de privacidade e segurança para garantir sua própria proteção. Se você reconheceu um comportamento suspeito, clicou em spam ou foi enganado online, tome medidas para proteger sua conta e certifique-se de denunciar o ocorrido.</p>
+                            </li>
+                            <li>
+                                <strong>Crie uma palavra-chave para utilizar com as pessoas próximas.</strong>
+                                <p>Estabeleça uma palavra-chave com familiares, amigos ou colegas para confirmar a identidade de alguém que lhe contata de forma inesperada.</p>
+                            </li>
+                            <li>
+                                <strong>Resista à pressão para agir imediatamente.</strong>
+                                <p>Empresas legítimas lhe darão tempo para decidir. Qualquer pessoa que pressione você para pagar ou divulgar suas informações pessoais é possivelmente um golpista.</p>
+                            </li>
+                            <li>
+                                <strong>Se parece bom demais para ser verdade, provavelmente não é.</strong>
+                                <p>Se um site ou qualquer pessoa com quem você esteja se comunicando online oferecer grandes descontos ou prêmios enormes que não pareçam reais ou plausíveis, tenha cuidado. Como diz o ditado: se parece bom demais para ser verdade, provavelmente não é mesmo verdade.</p>
+                                <p>Em geral, fique alerta e tenha cuidado com pessoas que entram em contato inesperadamente por e-mail ou telefone e pedem informações pessoais.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>

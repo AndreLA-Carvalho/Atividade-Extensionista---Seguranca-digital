@@ -1,77 +1,206 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing - Segurança Digital</title>
-
-    <script>
-        // Verifica se o usuário já havia escolhido o tema escuro anteriormente.
-        // Evita o "flash" branco ao recarregar a página.
-        (function() {
-            const tema = localStorage.getItem('tema');
-            if (tema === 'dark') {
-                document.documentElement.classList.add('dark-mode');
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Golpes online - Segurança Digital</title>
+        <!-- Aplica o tema salvo antes de exibir a página. -->
+        <script>
+            try {
+                if (localStorage.getItem('tema') === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (error) {
             }
-        })();
-    </script>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-    <header class="navbar">
-        <div class="header-container">
-            
-            <!-- ESQUERDA: Botão Home/Voltar -->
-            <div class="header-left">
-                <a href="index.html" class="logo-home" title="Voltar para a página inicial">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                    <span>Início</span>
-                </a>
+        </script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- A navegação se repete nas páginas para manter os atalhos sempre no mesmo lugar. -->
+        <header class="navbar">
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="index.html" class="logo-home" title="Voltar para a página inicial">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span>Início</span>
+                    </a>
+                </div>
+                <nav class="header-center" aria-label="Navegação principal">
+                    <a href="phishing.html" class="nav-link">Phishing</a>
+                    <a href="malwares.html" class="nav-link">Malwares</a>
+                    <a href="golpes.html" class="nav-link" aria-current="page">Golpes</a>
+                    <a href="dicas.html" class="nav-link">Dicas</a>
+                </nav>
+                <div class="header-right">
+                    <button id="toggleTheme" class="themeButton" aria-label="Mudar tema">
+                        <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&amp;ouid=103952147136890410990" target="_blank" rel="noopener noreferrer" class="btn-feedback-header">Feedback</a>
+                </div>
             </div>
-
-            <!-- CENTRO: Links de Navegação Rápida -->
-            <nav class="header-center">
-                <a href="phishing.html" class="nav-link">Phishing</a>
-                <a href="malwares.html" class="nav-link">Malwares</a>
-                <a href="golpes.html" class="nav-link">Golpes</a>
-                <a href="dicas.html" class="nav-link">Dicas</a>
-            </nav>
-
-            <!-- DIREITA: Tema e Feedback -->
-            <div class="header-right">
-                <button id="toggleTheme" class="themeButton" aria-label="Mudar tema">
-                    <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback-header">Feedback</a>
+        </header>
+        <main>
+            <div class="container">
+                <h1>Quais são os principais golpes online e como evitá-los?</h1>
+                <p>A Internet está tão incorporada às nossas vidas que às vezes pode ser fácil esquecer que nem todas as pessoas que encontramos online têm as melhores intenções.</p>
+                <p>Os golpes na Internet são uma ameaça sempre presente, com hackers e criminosos virtuais fazendo o possível para estar um passo à frente dos usuários. Conhecer os riscos e saber como combatê-los é a melhor forma de se manter em segurança.</p>
+                <details class="caixa-expansivel">
+                    <summary>Golpes de loteria</summary>
+                    <div class="conteudo-oculto">
+                        <p>Você normalmente recebe um e-mail com esses golpes alegando que você ganhou em uma loteria pouco conhecida, às vezes de outro país, e sempre com um prêmio alto.</p>
+                        <p>Para reivindicá-lo, pedem que você pague uma taxa. Os golpistas costumam dizer que essas taxas são custos de seguro, tarifas governamentais ou de transporte.</p>
+                        <p>É solicitado que você envie informações pessoais para fins de confirmação e, de repente, você se torna vítima de roubo de identidade, e o dinheiro enviado some para sempre.</p>
+                        <p>Em outra versão dos golpes de loteria ou prêmio, os golpistas conseguem acesso à conta na rede social de alguém e entra em contato com amigos ou familiares dizendo que todos ganharam dinheiro.</p>
+                        <p>O golpista então fornece um endereço de e-mail pelo qual eles receberão instruções para reivindicar o prêmio. Essa é uma versão particularmente ardilosa do golpe, pois usa a confiança entre amigos e familiares para enganar as pessoas e obter o dinheiro delas.</p>
+                        <h3>Como evitar golpes de loteria</h3>
+                        <p>Os golpes de loteria apresentam sinais específicos:</p>
+                        <ul>
+                            <li>O e-mail vem de uma pessoa, não de uma empresa.</li>
+                            <li>Você não é o único destinatário do e-mail.</li>
+                            <li>Você nunca ouviu falar da loteria.</li>
+                        </ul>
+                        <p>Se você receber um e-mail desses, não clique em nenhum link e não envie nenhuma informação pessoal, faça uma rápida pesquisa no Google para verificar se ele é legítimo.</p>
+                        <button class="btn-fechar-caixa">▲ Fechar seção</button>
+                    </div>
+                </details>
+                <details class="caixa-expansivel">
+                    <summary>Golpe dos Correios</summary>
+                    <div class="conteudo-oculto">
+                        <p>Atualmente, o golpe dos Correios tem sido um dos mais comuns, afinal, a maioria da população faz compras pela internet em diversos sites e lojas.</p>
+                        <p>Em 2024, foi implementada a chamada "Taxa das blusinhas" nas compras internacionais. Esse fator acabou abrindo grande porta para os golpistas.</p>
+                        <p>Desde que a nova taxação foi implementada, pessoas recebem SMS e e-mails dizendo que a <strong>encomenda ficou presa na fiscalização</strong> e que deve ser paga uma taxa para liberação. E o golpe está justamente aí.</p>
+                        <p>A taxação das compras internacionais é verificada e realizada somente pelo <strong>site oficial dos Correios</strong>, logo, não há notificações por e-mail ou mensagem de texto do celular.</p>
+                        <h3>Como evitar golpes dos Correios</h3>
+                        <p>
+                            <strong>Confie somente na consulta realizada pelo site dos Correios</strong> e ignore mensagens de texto ou e-mails que pedem o pagamento da taxa através de links ou para contas específicas.</p>
+                        <button class="btn-fechar-caixa">▲ Fechar seção</button>
+                    </div>
+                </details>
+                <details class="caixa-expansivel">
+                    <summary>Golpe do Pix</summary>
+                    <div class="conteudo-oculto">
+                        <p>Atualmente, os golpistas usam diversas armadilhas para enganar e roubar pessoas utilizando o sistema de pagamento Pix.</p>
+                        <p>Como as transferências são feitas de forma bem rápida, a pessoa não consegue perceber em tempo hábil que está sendo vítima de golpe.</p>
+                        <h3>Tipos de golpes do Pix mais comuns</h3>
+                        <span>Clique nas caixas abaixo para saber mais sobre cada um deles:</span>
+                        <details class="caixa-interna">
+                            <summary>Sites falsos</summary>
+                            <div class="conteudo-interno">
+                                <p>A criação de sites falsos é uma das armadilhas mais comuns que os golpistas usam para roubar dinheiro das pessoas.Eles enviam um e-mail ou mensagem de texto para a vítima contendo um falso link para cadastro do Pix.</p>
+                                <p>Quando a vítima clica no link, uma falsa página abre e nela a vítima acaba informando seus dados pessoais e bancários.</p>
+                                <p>Dessa forma, os golpistas têm acesso aos dados necessários para roubar e usar o dinheiro das vítimas.</p>
+                                <h4>Como se prevenir</h4>
+                                <p>Sempre tenha certeza de que você realmente está acessando a página da sua instituição financeira. Caso tenha dúvidas se a solicitação é verdadeira, entre em contato com a instituição financeira para fazer a verificação.</p>
+                            </div>
+                        </details>
+                        <details class="caixa-interna">
+                            <summary>"Falha no Pix" que dá recompensa</summary>
+                            <div class="conteudo-interno">
+                                <p>Mais uma maneira encontrada pelos golpistas para roubar dinheiro utilizando o Pix é com golpe de “falha no Pix”.</p>
+                                <p>Os golpistas entram em contato com a vítima informando que existe uma falha no Pix que pode beneficiá-la, mas que para aproveitar essa chance a vítima deve fazer uma transferência para uma chave Pix específica.</p>
+                                <h4>Como se prevenir</h4>
+                                <p>Desconfie de pessoas que chegam oferecendo dinheiro e pedem para que você faça a transferência de algum valor antecipadamente, mesmo que seja baixo.</p>
+                                <p>Uma instituição financeira séria <strong>jamais pedirá que você transfira qualquer valor</strong> para que você tenha o direito de sacar um dinheiro que, supostamente, seria seu.</p>
+                            </div>
+                        </details>
+                        <details class="caixa-interna">
+                            <summary>Golpe do "investimento"</summary>
+                            <div class="conteudo-interno">
+                                <p>O golpe do “Investimento”, também conhecido como Urubu do Pix ou Pix multiplicado, é uma fraude que promete multiplicar seu dinheiro de forma rápida e fácil. Os criminosos criam perfis falsos ou invadem contas de pessoas conhecidas para divulgar ofertas de investimentos com retornos extremamente altos. Geralmente, eles mostram uma tabela que promete lucros muito superiores ao valor investido, muitas vezes até dez vezes mais. No entanto, essas promessas são falsas e visam apenas induzi-lo a transferir seu dinheiro para contas fraudulentas.</p>
+                                <h4>Como se prevenir</h4>
+                                <p>Para se prevenir, é essencial adotar algumas medidas de segurança:</p>
+                                <ul>
+                                    <li>
+                                        <strong>Desconfie</strong> de ofertas que prometem retornos financeiros rápidos e elevados.</li>
+                                    <li>
+                                        <strong>Verifique</strong> a autenticidade das ofertas de investimento antes de investir.</li>
+                                    <li>
+                                        <strong>Nunca compartilhe</strong> seus dados pessoais ou bancários com desconhecidos.</li>
+                                    <li>Se um amigo oferecer o investimento, <strong>faça perguntas</strong> que só ele saberia responder para garantir que a conta do WhatsApp ou rede social não foi clonada ou crie uma palavra-chave secreta para confirmar a identidade do contato.</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="caixa-interna">
+                            <summary>Perfil de whatsapp falsificado</summary>
+                            <div class="conteudo-interno">
+                                <p>Os golpistas criam um perfil do whatsapp apenas com o nome e a foto da pessoa, para se passar por outra pessoa.</p>
+                                <p>Ao enviar mensagens para pedir dinheiro aos familiares e amigos se passando pela pessoa, os golpistas dizem que aquele número é novo e dessa forma conseguem extorquir dinheiro das vítimas.</p>
+                                <h4>Como se prevenir</h4>
+                                <p>Novamente, o aconselhável é que busque meios de saber se <strong>aquela pessoa realmente se trata de um amigo ou familiar</strong>. Se você já conhece o som da voz da vítima, para ter confirmação do que se trata, peça que ela envie um áudio longo dizendo uma determinada coisa, assim você consegue fazer o reconhecimento da voz.</p>
+                            </div>
+                        </details>
+                        <details class="caixa-interna">
+                            <summary>Central de atendimento falsa</summary>
+                            <div class="conteudo-interno">
+                                <p>Outro golpe aplicado pelos criminosos, antes mesmo da existência do Pix, é o da central de atendimento falsa.</p>
+                                <p>Antes o golpe era feito por ligação, hoje em dia, os golpistas criam diversas contas no Whatsapp se passando por instituições financeiras, solicitam os dados pessoais das vítimas e até enviam links falsos.</p>
+                                <h4>Como se prevenir</h4>
+                                <p>Nunca envie seus dados sem ter a total certeza de que a pessoa que entrou em contato com você faça parte da equipe daquela instituição financeira.</p>
+                                <p>Se houver necessidade, <strong>busque pelo número da instituição e ligue para a central de atendimento</strong> ou, até mesmo, vá até uma agência.</p>
+                            </div>
+                        </details>
+                        <h3>Caí no golpe do pix, e agora?</h3>
+                        <p>Se você caiu no golpe do Pix, <strong>entre em contato imediatamente com seu banco</strong> para relatar o caso e solicitar a devolução do valor.</p>
+                        <p>Em seguida, registre um <strong>Boletim de Ocorrência</strong> e reúna todas as evidências possíveis, como comprovantes de transações e conversas.</p>
+                        <p>O Banco Central diz que as próprias instituições financeiras têm a responsabilidade de <strong>verificar as operações fraudulentas envolvendo o Pix</strong> por falha dos próprios mecanismos de gerenciamento dos riscos.</p>
+                        <p>Dentre as falhas estão a não observação da quantidade de transferências que fogem do normal feito pelo cliente e o excesso do limite diário de transferências previamente estabelecido.</p>
+                        <button class="btn-fechar-caixa">▲ Fechar seção</button>
+                    </div>
+                </details>
+                <details class="caixa-expansivel">
+                    <summary>Golpes de Robocall</summary>
+                    <div class="conteudo-oculto">
+                        <p>Se você atender o telefone e ouvir uma gravação em vez de uma pessoa falando ao vivo, essa é uma chamada robocall. Às vezes, elas são usadas para fornecer informações úteis, como lembretes de compromissos ou cancelamentos de voos. Porém, muitas são ligações de marketing não solicitadas ou golpes.</p>
+                        <p>Os golpes de robocall vêm em várias formas, como:</p>
+                        <ul>
+                            <li>Os golpistas podem fingir ser da Receita Federal, pedindo que você pague um imposto falso, senão seu CPF será excluído.</li>
+                            <li>Eles podem fingir ser de uma empresa de tecnologia conhecida como a Apple e solicitarem informações de clientes que uma empresa real não solicitaria por telefone.</li>
+                            <li>Eles podem oferecer uma avaliação gratuita de um produto ou serviço como uma desculpa para obter informações do seu cartão de crédito.</li>
+                        </ul>
+                        <h3>Como evitar golpes de robocall</h3>
+                        <p>O melhor é não atender o telefone se você suspeitar de um robocall, porém, nem sempre é possível saber, então, se atender o telefone, desligue assim que perceber que é um robocall.</p>
+                        <p>Evite seguir as instruções do bot, como "pressione 1 para falar com um atendente" etc. Evite dizer a palavra "sim", se puder, pois muitas chamadas automáticas começam com a frase "Olá, você está me ouvindo?", à qual os usuários podem responder "sim" sem pensar.</p>
+                        <p>Os golpistas então salvam a gravação e a utilizam para fins fraudulentos. Qualquer interação ou envolvimento positivo com um robocaller diz aos golpistas que você é um possível cliente, então, interagir o mínimo possível é a melhor abordagem.</p>
+                        <button class="btn-fechar-caixa">▲ Fechar seção</button>
+                    </div>
+                </details>
+                <details class="caixa-expansivel">
+                    <summary>Golpes de relacionamento online</summary>
+                    <div class="conteudo-oculto">
+                        <p>Os golpes de relacionamento estão crescendo. Você conhece alguém em um aplicativo ou site, começa a conversar e tudo parece verdadeiro. Mesmo assim, nem sempre sabemos quem está do outro lado da tela.</p>
+                        <p>Desconfie de quem pede dinheiro ou solicita que você receba e redirecione encomendas.</p>
+                        <p>
+                            <strong>"Catfishers"</strong> costumam usar a identidade de outra pessoa para parecerem autênticos, mas compartilham fotos e dados de contato falsos para não serem descobertos.</p>
+                        <p>Esses golpes costumam apresentar alguns sinais:</p>
+                        <ul>
+                            <li>Demonstração de afeto forte em pouco tempo.</li>
+                            <li>Mudança rápida dos sites ou aplicativos de relacionamento para canais privados.</li>
+                            <li>Solicitações de dinheiro por conta de alguma dificuldade pessoal, como um parente doente ou a falência de uma empresa.</li>
+                        </ul>
+                        <h3>Como evitar golpes de relacionamento</h3>
+                        <p>Para evitar esses golpes, você deve analisar cuidadosamente qualquer relacionamento online que floresça muito rapidamente. Nunca dê dinheiro à pessoa, a menos que também se relacione com ela off-line.</p>
+                        <p>E se você for encontrar essa pessoa fora do ambiente virtual, informe para algum conhecido o local do encontro, por segurança.</p>
+                        <button class="btn-fechar-caixa">▲ Fechar seção</button>
+                    </div>
+                </details>
+                <details class="caixa-expansivel">
+                    <summary>Golpes de oferta de emprego</summary>
+                    <div class="conteudo-oculto">
+                        <p>Os golpes de oferta de emprego cresceram durante a pandemia de COVID-19. Nesse golpe, você recebe um e-mail não solicitado com uma oferta de emprego, que geralmente não é da sua área de conhecimento, como para uma vaga de cliente oculto ou um cargo parecido.</p>
+                        <p>Depois de aceitar, você recebe um pagamento ou ordem de pagamento com valor superior ao que seu "empregador" ofereceu. Ele pede que você devolva a diferença, e você descobre que o cheque ou a ordem de pagamento eram falsos, ficando sem o dinheiro que foi enviado ao falso empregador.</p>
+                        <p>Com a ampla disseminação de sites de redes profissionais como o LinkedIn, as ofertas de emprego não solicitadas são comuns, o que significa que qualquer um que esteja buscando trabalho precisa ficar atento para diferenciar ofertas legítimas e golpes.</p>
+                        <h3>Como evitar golpes de oferta de emprego</h3>
+                        <p>Para evitar esses golpes, você deve analisar cuidadosamente qualquer oferta de emprego que receba. Nunca aceite ofertas que pareçam muito boas para serem verdadeiras. Verifique se a empresa é legítima e se a oferta de emprego é real.</p>
+                        <p>Se você aceitar um trabalho, nunca deposite cheques suspeitos antes de confirmar sua autenticidade. Para garantir, peça que o banco retenha os fundos até que o cheque ou a ordem de pagamento sejam verificados. Sempre que pedirem para você devolver a "diferença", será sinal de golpe.</p>
+                        <button class="btn-fechar-caixa">▲ Fechar seção</button>
+                    </div>
+                </details>
             </div>
-
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <h1>O que é Phishing?</h1>
-            
-            <p>Phishing é uma técnica de engenharia social usada por cibercriminosos para enganar usuários e obter informações confidenciais, como senhas e números de cartão de crédito. Isso geralmente é feito através de e-mails, SMS ou mensagens falsas que parecem vir de instituições confiáveis.</p>
-            
-            <h2>Como identificar?</h2>
-            <ul>
-                <li>Senso de urgência exagerado ("Sua conta será bloqueada hoje!").</li>
-                <li>Links com erros ortográficos sutis.</li>
-                <li>Remetentes desconhecidos ou estranhos.</li>
-            </ul>
-
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMh8UCii5gxMpew0QJJ0eXxdn0T01aBiDQl6DZRSHWTi8Ewg/viewform?usp=sharing&ouid=103952147136890410990" target="_blank" class="btn-feedback">Envie seu Feedback</a>
-        </div>
-    </main>
-
-    <!-- Script para que o botão de tema funcione aqui também -->
-    <script src="script.js"></script>
-</body>
+        </main>
+        <script src="script.js"></script>
+    </body>
 </html>
