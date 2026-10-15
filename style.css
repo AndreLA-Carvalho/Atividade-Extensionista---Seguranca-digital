@@ -1,8 +1,4 @@
-/* =================================================
-   ============== VARIÁVEIS DE CORES ===============
-   ================================================= */
-
-/* Variáveis padrão do Tema Claro */
+/* A classe .dark-mode troca a paleta sem duplicar os estilos dos componentes. */
 :root {
     --bg-body: #f4f7f6;
     --bg-container: #ffffff;
@@ -13,13 +9,11 @@
     --bg-dica: #ecf0f1;
     --color-shadow: rgba(0, 0, 0, 0.1);
     --color-emphasis: #3855fa;
-    
-    /* Cores do botão de tema */
     --theme-btn-color: #333333;
-    --theme-btn-hover: #e67e22; 
+    --theme-btn-hover: #e67e22;
+    --hex-pattern-opacity: 0.08;
+    --hex-wave-opacity: 0.18;
 }
-
-/* Variáveis sobrepostas do Tema Escuro */
 .dark-mode {
     --bg-body: #121212;
     --bg-container: #1e1e1e;
@@ -29,44 +23,80 @@
     --bg-input: #2c2c2c;
     --bg-dica: #2a2a2a;
     --color-shadow: rgba(0, 0, 0, 0.5);
-    
-    /* Cores do botão de tema */
     --theme-btn-color: #e0e0e0;
-    --theme-btn-hover: #f1c40f; 
+    --theme-btn-hover: #f1c40f;
+    --hex-pattern-opacity: 0.2;
+    --hex-wave-opacity: 0.4;
 }
-
-/* =================================================
-   ================= ESTILOS GERAIS ================
-   ================================================= */
-
+/* Estrutura geral da página. */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-body); 
-    color: var(--color-text); 
+    background-color: var(--bg-body);
+    color: var(--color-text);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Transição suave ao trocar de tema */
+    isolation: isolate;
+    position: relative;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* =================================================
-   ============== BARRA DE NAVEGAÇÃO ===============
-   ================================================= */
+/* A malha fica no fundo da página; os cartões continuam com fundo opaco para preservar a leitura. */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 156 180'%3E%3Cg fill='none' stroke='%233855fa' stroke-width='1'%3E%3Cpath d='M39 0 78 22.5v45L39 90 0 67.5v-45L39 0Zm78 0 39 22.5v45L117 90 78 67.5v-45L117 0Zm-78 90 39 22.5v45l-39 22.5L0 157.5v-45L39 90Zm78 0 39 22.5v45l-39 22.5-39-22.5v-45l39-22.5Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 156px 180px;
+    background-repeat: repeat;
+}
 
+body::before {
+    opacity: var(--hex-pattern-opacity);
+}
+
+/* A faixa revela a mesma malha por alguns segundos e depois sai de vista. */
+body::after {
+    opacity: 0;
+    filter: drop-shadow(0 0 5px var(--color-emphasis));
+    -webkit-mask-image: linear-gradient(115deg, transparent 45%, #000 50%, transparent 55%);
+    mask-image: linear-gradient(115deg, transparent 45%, #000 50%, transparent 55%);
+    -webkit-mask-size: 300% 100%;
+    mask-size: 300% 100%;
+    animation: hex-wave 12s ease-in-out infinite;
+}
+
+@keyframes hex-wave {
+    0%, 12% {
+        opacity: 0;
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+    20%, 58% {
+        opacity: var(--hex-wave-opacity);
+    }
+    68%, 100% {
+        opacity: 0;
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+}
+/* Barra fixa compartilhada pelas páginas de conteúdo. */
 .navbar {
     width: 100%;
-    background-color: var(--bg-container); /* Fundo acompanha o tema do cartão */
-    box-shadow: 0 2px 10px var(--color-shadow); /* Sombra para separar o menu do resto do site */
+    background-color: var(--bg-container);
+    box-shadow: 0 2px 10px var(--color-shadow);
     display: flex;
     justify-content: center;
-    position: sticky; /* Faz o menu ficar fixo no topo ao rolar a página */
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
-
 .header-container {
     width: 90%;
     max-width: 1140px;
@@ -76,8 +106,6 @@ body {
     padding: 15px 0;
     box-sizing: border-box;
 }
-
-/* --- Lado Esquerdo (Logo/Home) --- */
 .header-left .logo-home {
     display: flex;
     align-items: center;
@@ -88,17 +116,13 @@ body {
     font-size: 18px;
     transition: transform 0.2s ease;
 }
-
 .header-left .logo-home:hover {
     transform: scale(1.05);
 }
-
-/* --- Centro (Links de Navegação) --- */
 .header-center {
     display: flex;
     gap: 20px;
 }
-
 .nav-link {
     text-decoration: none;
     color: var(--color-text);
@@ -108,19 +132,19 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .nav-link:hover {
     background-color: var(--bg-body);
     color: var(--color-emphasis);
 }
-
-/* --- Lado Direito (Tema e Feedback) --- */
+.nav-link[aria-current="page"] {
+    color: var(--color-emphasis);
+    background-color: var(--bg-body);
+}
 .header-right {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
 .themeButton {
     background: none;
     border: none;
@@ -130,12 +154,73 @@ body {
     display: flex;
     transition: transform 0.3s ease, color 0.3s ease;
 }
-
 .themeButton:hover {
     transform: scale(1.1);
     color: var(--theme-btn-hover);
 }
+/* Impede regras de layout de reexibir telas marcadas como ocultas no HTML. */
+[hidden] {
+    display: none !important;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--color-emphasis);
+    outline-offset: 3px;
+}
+/* Área de leitura central das páginas. */
+.container {
+    max-width: 960px;
+    padding: clamp(22px, 4vw, 48px);
+    border-radius: 12px;
+}
+.coluna-dicas .dica-box {
+    cursor: default;
+}
+.status-mensagem {
+    color: #a64b00;
+    font-size: 14px;
+}
+.content-image {
+    display: block;
+    width: min(100%, 400px);
+    height: auto;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--color-shadow);
+}
+.caixa-expansivel summary::-webkit-details-marker,
+.caixa-interna summary::-webkit-details-marker {
+    display: none;
+}
+.caixa-expansivel summary::after,
+.caixa-interna summary::after {
+    content: "+";
+    float: right;
+    color: var(--color-emphasis);
+    font-size: 1.2em;
+    line-height: 1;
+}
+.caixa-expansivel[open] > summary::after,
+.caixa-interna[open] > summary::after {
+    content: "−";
+}
+@media (prefers-reduced-motion: reduce) {
+    body::after {
+        animation: none;
+        opacity: 0;
+    }
 
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
 .btn-feedback-header {
     background-color: #27ae60;
     color: white;
@@ -146,74 +231,53 @@ body {
     font-size: 14px;
     transition: background-color 0.3s;
 }
-
 .btn-feedback-header:hover {
     background-color: #2ecc71;
 }
-
-/* Responsividade do Header: ajusta os itens em telas menores de celulares */
 @media (max-width: 768px) {
     .header-container {
         padding: 10px 0;
-        flex-wrap: wrap; 
-        justify-content: space-between; /* Afasta o Início para a esquerda e o Feedback para a direita */
+        flex-wrap: wrap;
+        justify-content: space-between;
         gap: 10px;
     }
     .header-center {
-        order: 3; /* Joga os links de texto para a linha debaixo no celular */
+        order: 3;
         width: 100%;
         justify-content: center;
         gap: 10px;
         flex-wrap: wrap;
     }
 }
-
-.themeButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--theme-btn-color);
-    padding: 5px;
-    display: flex;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.themeButton:hover {
-    transform: scale(1.1);
-    color: var(--theme-btn-hover);
-}
-
-/* =================================================
-   =============== AJUSTE DE CONTEÚDO ==============
-   ================================================= */
-
+/* O main mantém o conteúdo alinhado ao centro da página. */
 main {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .container {
-    max-width: 1140px; 
+    max-width: 1140px;
     width: 90%;
-    /*margin-top: 20px;
-    margin-bottom: 50px;*/
-    background: var(--bg-container); 
+    background: var(--bg-container);
     padding: 30px;
     border-radius: 0px;
-    box-shadow: 0 4px 10px var(--color-shadow); 
+    box-shadow: 0 4px 10px var(--color-shadow);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
-
-/* =================================================
-   ================ ESTILOS DE TEXTO ===============
-   ================================================= */
-
 h1, h2 {
-    color: var(--color-emphasis); 
+    color: var(--color-emphasis);
     text-align: left;
+}
+h3 {
+    color: var(--color-emphasis);
+    text-align: left;
+}
+h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--color-heading);
 }
 p {
     line-height: 1.6;
@@ -223,41 +287,31 @@ ul {
     padding-left: 20px;
     margin-bottom: 25px;
 }
-
 li {
     margin-bottom: 15px;
     line-height: 1.6;
     text-align: left;
 }
-
-li b {
+li strong {
     color: var(--color-heading);
 }
-
-/* =================================================
-   ================= TELA DE LOGIN =================
-   ================================================= */
-
-/* 1. Alinha o bloco todo à esquerda */
+/* O registro de acesso é substituído pelo material depois que o acesso é registrado. */
 #tela-login {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha todos os itens pela borda esquerda */
+    align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
 }
-
-/* 2. Força o título e os parágrafos a ficarem à esquerda */
-#tela-login h1, 
+#tela-login h1,
 #tela-login p {
     text-align: left;
     width: 100%;
     margin-top: 0;
 }
-
 #tela-login input[type="text"] {
     width: 100%;
-    box-sizing: border-box; /* Impede que o padding quebre o tamanho da caixa */
+    box-sizing: border-box;
     padding: 12px;
     margin-top: 10px;
     text-align: left;
@@ -268,19 +322,15 @@ li b {
     font-size: 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* 4. Alinha a mensagem de erro e garante a cor VERMELHA */
 #tela-login .mensagem-erro {
-    color: #e74c3c; /* Vermelho forte para alertas */
+    color: #e74c3c;
     text-align: left;
     width: 100%;
     font-size: 14px;
     margin-top: 5px;
     font-weight: 500;
-    display: none; /* Começa invisível, o JS é quem mostra */
+    display: block;
 }
-
-/* Mantém o aviso da faculdade à esquerda e cinza */
 #tela-login .aviso-faculdade {
     text-align: left;
     width: 100%;
@@ -289,7 +339,6 @@ li b {
     font-size: 12px;
     color: #7f8c8d;
 }
-
 #tela-login button#btnAcessar {
     width: 100%;
     box-sizing: border-box;
@@ -303,44 +352,38 @@ li b {
     cursor: pointer;
     transition: background 0.3s;
 }
-
 #tela-login button#btnAcessar:hover {
     background-color: #3498db;
 }
-
 button#btnAcessar:disabled {
     background-color: #95a5a6;
     cursor: not-allowed;
 }
-
-#tela-conteudo {
-    display: none; 
-}
-
 .eyebrow {
     text-align: left;
     margin-bottom: 10px;
     color: var(--color-emphasis);
 }
-
-/* =================================================
-   =========== CARDS CLICÁVEIS E BOTÕES ============
-   ================================================= */
-
-/* Cria a estrutura de grade para alinhar os botões lado a lado */
+/* Cartões da página inicial e caixas de dicas. */
 .grid-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide exatamente em 2 colunas do mesmo tamanho */
-    gap: 15px; /* Cria o espaçamento entre os botões (horizontal e vertical) */
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
     width: 100%;
     margin-bottom: 20px;
 }
-
+.coluna-dicas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
 .dica-box {
-    display: block; 
-    text-decoration: none; /* Remove o sublinhado padrão dos links */
-    color: var(--color-text); 
-    background-color: var(--bg-dica); 
+    display: block;
+    text-decoration: none;
+    color: var(--color-text);
+    background-color: var(--bg-dica);
     border-left: 5px solid #e74c3c;
     padding: 20px;
     margin-bottom: 0px;
@@ -349,75 +392,15 @@ button#btnAcessar:disabled {
     cursor: pointer;
     box-sizing: border-box;
 }
-
-/* Efeito de interatividade ao passar o mouse por cima do card */
 .dica-box:hover {
-    transform: translateY(-3px); /* Levanta o card levemente */
-    box-shadow: 0 6px 15px var(--color-shadow); /* Aumenta a sombra */
-    background-color: var(--bg-input); /* Dá um leve clareamento/escurecimento */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--color-shadow);
+    background-color: var(--bg-input);
 }
-
-/* Garante que o título dentro do link mantenha a cor correta */
 .dica-box h3 {
     color: var(--color-heading);
     margin-top: 0;
 }
-
-/* =================================================
-   ==== AJUSTES PARA CELULARES (RESPONSIVIDADE) ====
-   ================================================= */
-@media (max-width: 768px) {
-    /* Alinha o texto à esquerda para leitura fluida no celular */
-    p, h1, h2, h3 {
-        text-align: left !important;
-    }
-
-    /* Compacta o topo do cabeçalho */
-    .header-container {
-        padding: 10px 0;
-        flex-wrap: wrap; 
-        gap: 10px;
-    }
-
-    /* Diminui a fonte e o padding para caber melhor */
-    .btn-feedback-header {
-        display: inline-block;
-        padding: 6px 10px;
-        font-size: 13px;
-    }
-
-    /* Transforma os cards em 1 única coluna preenchendo 100% da largura */
-    .grid-cards {
-        grid-template-columns: 1fr;
-    }
-
-    /* Menu deslizável lateralmente */
-    .header-center {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap; 
-        justify-content: flex-start;
-        overflow-x: auto; 
-        -webkit-overflow-scrolling: touch; 
-        gap: 10px;
-        padding-bottom: 5px;
-        order: 3; 
-    }
-
-    /* Esconde a barra de rolagem visual do menu para ficar elegante */
-    .header-center::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-link {
-        white-space: nowrap; 
-        font-size: 14px;
-        padding: 6px 12px;
-        background-color: var(--bg-body); 
-    }
-}
-
-/* Botão de voltar para a página inicial */
 .btn-voltar {
     display: inline-block;
     margin-bottom: 20px;
@@ -427,17 +410,10 @@ button#btnAcessar:disabled {
     font-size: 16px;
     transition: color 0.3s ease;
 }
-
 .btn-voltar:hover {
     color: var(--color-emphasis);
     text-decoration: underline;
 }
-
-
-/* =================================================
-   ============ BOTÃO DE FEEDBACK ============
-   ================================================= */
-
 .btn-feedback {
     background-color: #27ae60;
     display: block;
@@ -449,7 +425,193 @@ button#btnAcessar:disabled {
     border-radius: 5px;
     font-weight: bold;
 }
-
 .btn-feedback:hover {
     background-color: #2ecc71;
+}
+/* As caixas usam o comportamento nativo de <details> e <summary>. */
+.caixa-expansivel {
+    background-color: var(--bg-dica);
+    border-left: 5px solid var(--color-emphasis);
+    margin-bottom: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.caixa-expansivel summary {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--color-heading);
+    list-style: none;
+}
+.caixa-expansivel summary:hover {
+    background-color: var(--bg-input);
+}
+.conteudo-oculto {
+    padding: 15px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+.caixa-interna {
+    background-color: var(--bg-input);
+    border-left: 3px solid #8e44ad;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.caixa-interna summary {
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--color-text);
+    list-style: none;
+}
+.caixa-interna summary:hover {
+    background-color: var(--bg-body);
+}
+.conteudo-interno {
+    padding: 15px;
+    border-top: 1px dashed var(--color-border);
+    font-size: 15px;
+    color: var(--color-text);
+}
+/* Etapas ilustradas nos guias de ransomware e spyware. */
+.fluxo-ataque {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 30px 0;
+    width: 100%;
+}
+.fluxo-etapa {
+    background-color: var(--bg-dica);
+    border: 2px solid var(--color-emphasis);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px var(--color-shadow);
+}
+.fluxo-etapa h4 {
+    color: var(--color-heading);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--color-emphasis);
+    padding-bottom: 8px;
+    font-size: 16px;
+    text-align: center !important;
+}
+.fluxo-etapa p {
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.5;
+    text-align: center !important;
+}
+
+.fluxo-etapa ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fluxo-etapa li {
+    margin: 0 0 6px;
+    text-align: center;
+}
+.fluxo-etapa.alerta {
+    border-color: #e74c3c;
+}
+.fluxo-etapa.alerta h4 {
+    color: #e74c3c;
+    border-bottom-color: #e74c3c;
+}
+.fluxo-seta {
+    color: var(--color-emphasis);
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-fechar-caixa {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%;
+}
+.btn-fechar-caixa:hover {
+    background-color: var(--bg-input);
+    color: var(--color-emphasis);
+    border-color: var(--color-emphasis);
+}
+@media (min-width: 769px) {
+    .btn-fechar-caixa {
+        width: max-content;
+    }
+}
+/* Ajustes para telas menores. */
+@media (max-width: 768px) {
+    p, h1, h2, h3 {
+        text-align: left !important;
+    }
+    .header-container {
+        padding: 10px 0;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .btn-feedback-header {
+        display: inline-block;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    .grid-cards {
+        grid-template-columns: 1fr;
+    }
+    .header-center {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 10px;
+        padding-bottom: 5px;
+        order: 3;
+    }
+    .header-center::-webkit-scrollbar {
+        display: none;
+    }
+    .nav-link {
+        white-space: nowrap;
+        font-size: 14px;
+        padding: 6px 12px;
+        background-color: var(--bg-body);
+    }
+    .fluxo-ataque {
+        flex-direction: column;
+        align-items: center;
+    }
+    .fluxo-etapa {
+        width: 80%;
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+    .fluxo-seta {
+        transform: rotate(90deg);
+        margin: 5px 0;
+    }
 }
